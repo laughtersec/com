@@ -13,8 +13,8 @@ const config: QuartzConfig = {
     enableSPA: true,
     enablePopovers: true,
     analytics: {
-      provider: "google",
-      tagID: "G-LDGDRF6N5V"
+      provider: 'google',
+      tagId: 'G-LDGDRF6N5V'
     },
     locale: "en-US",
     baseUrl: "laughtersec.github.io/com",
