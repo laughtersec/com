@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2025-11-09T10:25:30.835+05:30","published":"2025-11-09T10:25:30.835+05:30","tags":["theory"],"cssclasses":""}
+{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2025-11-09T10:33:24.984+05:30","published":"2025-11-09T10:33:24.984+05:30","tags":["theory"],"cssclasses":""}
 ---
 
 # The glue between RPC and programming-language-barriers
@@ -27,7 +27,7 @@ Some physical aspects of an interface are directly derivable from a logical desc
 ## Example syntax
 IDL allows interface designers to work mainly in the logical realm using C-style syntax. However, IDL also allows interface designers to precisely specify any aspects of an interface that cannot be derived directly from its C-style logical description using annotations that are formally called attributes.
 
-```shell
+```c
 [
 	v1_enum, helpstring("This is a property!")
 ]
@@ -38,7 +38,7 @@ the v1_enum attribute applies to the enumeration definition of PROPERTY. This pa
 
 When defining COM methods in IDL, one needs to indicate explicitly whether the caller or the callee will be writing or reading each method parameter. This is accomplished using the parameter attributes `[in]` and `[out]`:
 
-```
+```c
 void Method1(
 	[in] long arg1,
 	[out] long *parg2,
@@ -48,7 +48,7 @@ void Method1(
 
 For this IDL fragment, the caller is expected to pass a value to the object in `arg1` and in the location referred to by `parg3`. Upon completion, the object is expected to pass values back to the caller through the locations referred to by `parg2` and `parg3`. This means that for the following caller sequence:
 
-```
+```c
 long arg2 = 20, arg3 = 30;
 p->Method(10, &arg2, &arg3);
 ```
