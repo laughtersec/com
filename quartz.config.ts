@@ -25,10 +25,7 @@ const config: QuartzConfig = {
       cdnCaching: false,
       typography: {
         header: "Rubik 80s Fade",
-        body: {
-          name: "Raleway",
-          includeItalic: true,
-        },
+        body: "Raleway",
         code: "Source Code Pro",
       },
       colors: {
