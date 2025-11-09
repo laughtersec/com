@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2025-11-09T12:17:12.887+05:30","published":"2025-11-09T12:17:12.887+05:30","tags":["theory"],"cssclasses":""}
+{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2025-11-09T15:23:50.717+05:30","published":"2025-11-09T15:23:50.717+05:30","tags":["theory"],"cssclasses":""}
 ---
 
 # The glue between RPC and programming-language-barriers
@@ -54,11 +54,10 @@ long arg2 = 20, arg3 = 30;
 p->Method(10, &arg2, &arg3);
 ```
 
-the object cannot count on receiving the actual value of 20 via parg2. If the object is running in the same execution context as the caller and both parties are impleneted in C++, then `*parg2` will in fact contain the value of 20 on method entry. However, if the object is accessed from a different execution context or one part is implemented in a language that optimizes away the initialization of the out-only parameter, then the caller's initialization will be lost.
+the object cannot count on receiving the actual value of 20 via parg2. If the object is running in the same execution context as the caller and both parties are implemented in C++, then `*parg2` will in fact contain the value of 20 on method entry. However, if the object is accessed from a different execution context or one part is implemented in a language that optimizes away the initialization of the out-only parameter, then the caller's initialization will be lost.
 
 ## How this affects Methods (implementation) and Results (their return)
 
 Method results are one aspect of COM where the [[Concepts/IDL#How an "Interface" should be seen\|logical and physical]] worlds diverge. ==Almost all COM methods physically return an error number of type HRESULT.== ==The use of a uniform result type allows COM's remoting architecture to overload the result of a method and also indicate communications errors simply by reserving a range of values for RPC errors.== HRESULTs are 32-bit integers that provide information to the caller's runtime environment about what type of error may have occurred (e.g., network errors, server failures).
 
 For many COM-compatible implementation languages (e.g., Visual Basic, Java), these ==HRESULTs are intercepted by a supporting runtime or virtual machine and mapped to programmatic exceptions==.
-
