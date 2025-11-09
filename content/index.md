@@ -1,3 +1,4 @@
 # Component Object Model
 
-I'm writing this so that there can be a bridge between two social circles, because one circle is always just way too autistic/retarded for the other.
+I have taken excerpts from [[https://www.amazon.com/DCOM-Microsoft-Distributed-Component-Object/dp/0764580442\|DCOM: Microsoft Distributed Component Object Model]] and [[https://www.amazon.com/Essential-COM-Addison-Wesley-Object-Technology/dp/0201634465\|Don Box - Essential COM]] and fit them together like pieces of a large puzzle, addressing the confusion I faced when delving into this topic.
+
