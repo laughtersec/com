@@ -24,7 +24,8 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: false,
       typography: {
-        header: "Rubik 80s Fade",
+        title: "Rubik 80s Fade",
+        header: "Raleway",
         body: "Raleway",
         code: "Source Code Pro",
       },
