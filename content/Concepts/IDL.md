@@ -1,10 +1,10 @@
 ---
-{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2025-11-09T10:53:11.416+05:30","published":"2025-11-09T10:53:11.416+05:30","tags":["theory"],"cssclasses":""}
+{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2025-11-09T10:54:46.306+05:30","published":"2025-11-09T10:54:46.306+05:30","tags":["theory"],"cssclasses":""}
 ---
 
 # The glue between RPC and programming-language-barriers
 
-COM IDL is based on the Open Software Foundation Distributed Computing Environment Remote Procedure Call (OSF DCE RPC) IDL.
+COM IDL (Interface Description Language) is based on the Open Software Foundation Distributed Computing Environment Remote Procedure Call (OSF DCE RPC) IDL.
 
 DCE IDL allows **remote procedure calls** to be described in a language-neutral manner that also enables an IDL compiler to generate networking code that transparently remotes the described operations over a variety of network transports. COM IDL simply adds a few COM-specific extensions to DCE IDL to support the object-oriented nature of COM (e.g. inheritance, polymorphism). 
 
