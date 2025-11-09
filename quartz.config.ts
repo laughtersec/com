@@ -26,7 +26,7 @@ const config: QuartzConfig = {
       typography: {
         header: "Rubik 80s Fade",
         body: {
-          name: "Raleway"
+          name: "Raleway",
           includeItalic: true,
         },
         code: "Source Code Pro",
