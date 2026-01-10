@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:22:36.856+05:30","published":"2026-01-10T09:22:36.856+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:27:42.338+05:30","published":"2026-01-10T09:27:42.338+05:30","tags":["programming-preliminaries"],"cssclasses":""}
 ---
 
 > Please get [[Concepts/COM Overview\|an overview of COM]] before proceeding. 
@@ -11,6 +11,7 @@ Lets create our first in-process server "UserInfo". ==This is a hypothetical COM
 | Name          | LPSTR         |
 | Age           | unsigned int  |
 | Sex           | unsigned char |
+
 The process can be broken down into these simple steps:
 - A GUID will be allocated for use as CLSIDs, IIDs and LIBIDs
 - Interfaces that would be exposed will be defined
