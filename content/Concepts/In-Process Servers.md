@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T19:36:39.647+05:30","published":"2026-01-10T19:36:39.647+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T20:59:47.149+05:30","published":"2026-01-10T20:59:47.149+05:30","tags":["programming-preliminaries"],"cssclasses":""}
 ---
 
 > Please get [[Concepts/COM Overview\|an overview of COM]] before proceeding. 
@@ -654,6 +654,8 @@ extern "C" BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserve
 ```
 
 - - - 
+# Source
+
 [Full source is provided here](https://github.com/laughtersec/com-servers-and-clients)
 
 After a bit of searching, I found a sample project from Microsoft itself: https://github.com/microsoft/component-object-model-sample

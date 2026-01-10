@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2026-01-10T20:50:51.313+05:30","published":"2026-01-10T20:50:51.313+05:30","tags":["theory"],"cssclasses":""}
+{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2026-01-10T20:55:21.381+05:30","published":"2026-01-10T20:55:21.381+05:30","tags":["theory"],"cssclasses":""}
 ---
 
 # Introduction
@@ -61,7 +61,7 @@ class CSomeObject : IUnknown
 };
 ```
 
-A better example can be seen [[Concepts/In-Process Servers#Implementing Interface Functions\|here]].
+ >A better example can be seen [[Concepts/In-Process Servers#Implementing Interface Functions\|here]].
 
 ## Object Versioning and Evolution
 
