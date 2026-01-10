@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2026-01-10T20:10:16.158+05:30","published":"2026-01-10T20:10:16.158+05:30","tags":["theory"],"cssclasses":""}
+{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2026-01-10T20:50:51.313+05:30","published":"2026-01-10T20:50:51.313+05:30","tags":["theory"],"cssclasses":""}
 ---
 
 # Introduction
@@ -46,8 +46,22 @@ pIDesiredInterface->desiredFunction();
 //  Whatever comes after
 ```
 
-==However, the documentation does not state anywhere that it is mandatory to use the== `IUnknown` ==interface when calling== `CoCreateInstance` ==although it is a conventional practice.==
+==However, the documentation does not state anywhere that it is mandatory to use the== `IUnknown` ==interface when calling== `CoCreateInstance` ==although it is a conventional practice.== Because every interface in turn calls the `IUnknown` interface (?).
 ## Lifetime management
+
+Its in the name! Lifetime being the active instance of an object. Everything that lives has to die at some point. The management of the cycle of creation and destruction of objects is lifetime management. How is it done in COM? Using reference counters. It is incremented when an object is created, and decremented when it is destroyed.
+
+The `IUnknown` interface has two functions `AddRef` and `Release` for this purpose. As we know, every COM object requires implementing `IUnknown`. So naturally, when we follow the steps to [[Concepts/COM Overview#Interface navigation\|navigate interfaces]], the reference count will be incremented.
+
+```cpp
+class CSomeObject : IUnknown
+{
+	private:
+		ULONG m_cRef;  //  Reference counting variable
+};
+```
+
+A better example can be seen [[Concepts/In-Process Servers#Implementing Interface Functions\|here]].
 
 ## Object Versioning and Evolution
 
