@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2026-01-10T23:30:31.687+05:30","published":"2026-01-10T23:30:31.687+05:30","tags":["theory"],"cssclasses":""}
+{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2026-01-10T23:36:47.376+05:30","published":"2026-01-10T23:36:47.376+05:30","tags":["theory"],"cssclasses":""}
 ---
 
 # Introduction
@@ -77,8 +77,7 @@ Anything that provides accessibility to, or is a medium to various COM objects.
 - Since EXEs maintain their own address space, out-of-process servers are also capable of owning their own resources, which may be shared among their clients.
 - In most cases its hosted locally, so its also called a local server.
 
-Any COM server running in or out of process other than the client's machine is referred to as a remote server (dllhost.exe type shit), and is said to serve the client(s) remote objects.
-In the case where a remote server is an in-process server, COM automatically creates a separate surrogate process and loads the in-process server into its address space.
+Any COM server running in or out of process other than the client's machine is referred to as a remote server, and is said to serve the client(s) remote objects. In the case where a remote server is an in-process server, COM automatically creates a separate surrogate process and loads the in-process server into its address space.
 
 The context switching between processes is what creates a demand of resources and out-of-process and remote processes are responsible for this.
 
