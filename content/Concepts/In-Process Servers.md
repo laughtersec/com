@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:27:42.338+05:30","published":"2026-01-10T09:27:42.338+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:31:10.304+05:30","published":"2026-01-10T09:31:10.304+05:30","tags":["programming-preliminaries"],"cssclasses":""}
 ---
 
 > Please get [[Concepts/COM Overview\|an overview of COM]] before proceeding. 
@@ -183,6 +183,7 @@ We can see the following generated files
 | UserInfo.h   | Contains the C and C++ definitions for the `IUserInfo` interface is declared as a C++ abstract class, which means that at least one of its member functions is a pure virtual function. |                    |
 | UserInfo_i.c | Contains the definitions of the human-readable names that are used to refer to the `IUserInfo` interface, the type library, and the `UserInfo` object class.                            |                    |
 | UserInfo.tlb | Actual compiled type library, essentially a language-independent header file.                                                                                                           | Easier to analyze. |
+
 So far, we just defined the skeleton, now we can start working on the implementation (the procedures that the COM object can carry out).
 
 ## Implementing Interface Functions
