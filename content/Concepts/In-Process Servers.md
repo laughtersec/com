@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:41:59.532+05:30","published":"2026-01-10T09:41:59.532+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:52:43.554+05:30","published":"2026-01-10T09:52:43.554+05:30","tags":["programming-preliminaries"],"cssclasses":""}
 ---
 
 > Please get [[Concepts/COM Overview\|an overview of COM]] before proceeding. 
@@ -223,7 +223,7 @@ class CUserInfo : IUserInfo
 
 Now, all that remains is providing an implementation for each function prototype/member function.
 
-The first COM-related function is `QueryInterface` which is used for interface navigation. If a client calls `QueryInterface` with the IID of a supported interface, the object should respond by returning a pointer to that particular interface. ==In the case of the `UserInfo` COM object, if a client calls `QueryInterface` with the IID for either `IUnknown` or `IUserInfo`, `UserInfo` should return a pointer to that interface.== In the following example, we can see how the CUserInfo::QueryInterface object casts itself into either a `IUserInfo` pointer or an [[Concepts/IUnknown]] pointer, depending on the requested IID. ==If the requested interface is supported, `QueryInterface` calls `AddRef` to increase the reference count in accordance with COM's reference counting rules.== If all goes well, `QueryInterface` reports `NOERROR` to the client. ==If a client requests an unsupported interface, `E_NOINTERFACE` is returned to notify the client that the requested interface is not supported.== 
+The first COM-related function is `QueryInterface` which is used for interface navigation. If a client calls `QueryInterface` with the IID of a supported interface, the object should respond by returning a pointer to that particular interface. ==In the case of the ==`UserInfo` ==COM object, if a client calls== `QueryInterface` ==with the IID for either== `IUnknown`==or== `IUserInfo`==, ==`UserInfo` ==should return a pointer to that interface.== In the following example, we can see how the `CUserInfo::QueryInterface` object casts itself into either a `IUserInfo` pointer or an [[Concepts/IUnknown]] pointer, depending on the requested IID. ==If the requested interface is supported,== `QueryInterface` ==calls ==`AddRef` ==to increase the reference count in accordance with COM's reference counting rules.== If all goes well, `QueryInterface` reports `NOERROR` to the client. ==If a client requests an unsupported interface,== `E_NOINTERFACE` ==is returned to notify the client that the requested interface is not supported.== 
 
 ```cpp
 STDMETHODIMP CUserInfo::QueryInterface(REFIID iid, LPVOID *ppv)
