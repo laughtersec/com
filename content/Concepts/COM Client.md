@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2026-01-06T01:26:18.217+05:30","modified":"2026-01-10T12:07:40.633+05:30","published":"2026-01-10T12:07:40.633+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+{"publish":true,"created":"2026-01-06T01:26:18.217+05:30","modified":"2026-01-10T19:35:51.505+05:30","published":"2026-01-10T19:35:51.505+05:30","tags":["programming-preliminaries"],"cssclasses":""}
 ---
 
 To test our COM server, we will build the `UserInfoClient` application. The `UserInfoClient` application will create and use the `UserInfo` COM object that we've just developed. Once the `UserInfo` object is created, we will use `QueryInterface` to change to the `IUserInfo` interface, which we will then use to set each of the `UserInfo` object's properties. After setting each property, we will retrieve, format and display their values via the Win32 API function `MessageBox`, which simply creates and displays a small window containing a message. We must recall what a COM client needs to do before doing all this:
@@ -66,3 +66,5 @@ CoUninitialize();
 
 - - -
 [Full source is provided here](https://github.com/laughtersec/com-servers-and-clients)
+
+After a bit of searching, I found a sample project from Microsoft itself: https://github.com/microsoft/component-object-model-sample
