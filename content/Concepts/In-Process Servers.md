@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:13:51.808+05:30","published":"2026-01-10T09:13:51.808+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:22:36.856+05:30","published":"2026-01-10T09:22:36.856+05:30","tags":["programming-preliminaries"],"cssclasses":""}
 ---
 
 > Please get [[Concepts/COM Overview\|an overview of COM]] before proceeding. 
@@ -521,7 +521,7 @@ STDAPI DllUnregisterServer(void)
 	_TCHAR szCLSIDKey[MAX_STRING_LENGTH + 1];
 	_TCHAR szInProcServer32Key[MAX_STRING_LENGTH + 1];
 	wchar_t wszGUID[GUID_SIZE + 1];
-
+	
 	//Convert the CLSID to the format
 	//{00000000-0000-0000-0000-000000000000}
 	StringFromGUID2(CLSID_UserInfo, wszGUID, sizeof(wszGUID) / sizeof(wchar_t));
