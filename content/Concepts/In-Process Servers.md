@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:31:10.304+05:30","published":"2026-01-10T09:31:10.304+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:34:09.635+05:30","published":"2026-01-10T09:34:09.635+05:30","tags":["programming-preliminaries"],"cssclasses":""}
 ---
 
 > Please get [[Concepts/COM Overview\|an overview of COM]] before proceeding. 
@@ -341,7 +341,7 @@ STDMETHODIMP CUserInfoFactory::CreateInstance(IUnknown* pUnknownOuter, REFIID ii
 }  //  CreateInstance
 ```
 
-Clients using `CreateInstance` create an instance of a COM object and receive a pointer to a specific interface all in one call. ==Since an object has an initial reference count of zero upon instantiation, the call to `QueryInterface` also serves to increment the object's reference count to one.== If all goes well, `CreateInstance` also increments a global object counter, which is used to keep track of the total number of objects being served. ==Since in-process servers cannot maintain their own global memory, the global object counter is really the total number of objects being used by a particular client.==
+Clients using `CreateInstance` create an instance of a COM object and receive a pointer to a specific interface all in one call. ==Since an object has an initial reference count of zero upon instantiation, the call to== `QueryInterface` ==also serves to increment the object's reference count to one.== If all goes well, `CreateInstance` also increments a global object counter, which is used to keep track of the total number of objects being served. ==Since in-process servers cannot maintain their own global memory, the global object counter is really the total number of objects being used by a particular client.==
 
 ## Registering Class Information
 
