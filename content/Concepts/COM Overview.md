@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2026-01-10T15:40:57.282+05:30","published":"2026-01-10T15:40:57.282+05:30","tags":["theory"],"cssclasses":""}
+{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2026-01-10T15:47:48.672+05:30","published":"2026-01-10T15:47:48.672+05:30","tags":["theory"],"cssclasses":""}
 ---
 
 # Introduction
@@ -84,7 +84,7 @@ When the client is accessing a local server, and the proxy and stub are located 
 
 > RPC is the basis of DCOM.
 
-![](com_proxies_and_stubs.excalidraw)
+![com_proxies_and_stubs.excalidraw](com_proxies_and_stubs.excalidraw.md)
 ## Type Libraries
 
 ^90083c
