@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2025-11-09T15:23:50.717+05:30","published":"2025-11-09T15:23:50.717+05:30","tags":["theory"],"cssclasses":""}
+{"publish":true,"created":"2025-12-06T10:49:12.649+05:30","modified":"2026-01-09T11:42:14.486+05:30","published":"2026-01-09T11:42:14.486+05:30","tags":["theory"],"cssclasses":""}
 ---
 
 # The glue between RPC and programming-language-barriers
@@ -35,7 +35,7 @@ IDL allows interface designers to work mainly in the logical realm using C-style
 enum PROPERTY { SQFT, CEILING_HEIGHT, ROOM_COUNT };
 ```
 
-the v1_enum attribute applies to the enumeration definition of PROPERTY. This particular attribute informs the IDL compiler that the network representation for PROPERTY should be 32 bits, not 16 bits, which is the default. The helpstring attribute also applies to PROPERTY and injects the string "This is a property!" into the generated type library as documentation for the enumeration. If one ignores the attributes in an IDL file, the syntax is simply that of C. IDL supports structures, unions, arrays, enumerations, and typedefs with a syntax identical to that of their C counterparts.
+The v1_enum attribute applies to the enumeration definition of PROPERTY. This particular attribute informs the IDL compiler that the network representation for PROPERTY should be 32 bits, not 16 bits, which is the default. The helpstring attribute also applies to PROPERTY and injects the string "This is a property!" into the generated type library as documentation for the enumeration. If one ignores the attributes in an IDL file, the syntax is simply that of C. IDL supports structures, unions, arrays, enumerations, and typedefs with a syntax identical to that of their C counterparts.
 
 When defining COM methods in IDL, one needs to indicate explicitly whether the caller or the callee will be writing or reading each method parameter. This is accomplished using the parameter attributes `[in]` and `[out]`:
 
@@ -61,3 +61,59 @@ the object cannot count on receiving the actual value of 20 via parg2. If the ob
 Method results are one aspect of COM where the [[Concepts/IDL#How an "Interface" should be seen\|logical and physical]] worlds diverge. ==Almost all COM methods physically return an error number of type HRESULT.== ==The use of a uniform result type allows COM's remoting architecture to overload the result of a method and also indicate communications errors simply by reserving a range of values for RPC errors.== HRESULTs are 32-bit integers that provide information to the caller's runtime environment about what type of error may have occurred (e.g., network errors, server failures).
 
 For many COM-compatible implementation languages (e.g., Visual Basic, Java), these ==HRESULTs are intercepted by a supporting runtime or virtual machine and mapped to programmatic exceptions==.
+
+## Intrinsic Data Types Supported by IDL
+
+| Data Type           | Description                                                                                                                                                       |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| boolean             | Data item with either a TRUE or FALSE value                                                                                                                       |
+| char                | 8-bit, signed data item                                                                                                                                           |
+| double              | 64-bit IEEE floating-point number                                                                                                                                 |
+| int                 | System-dependent signed integer                                                                                                                                   |
+| float               | 32-bit IEEE floating-point number                                                                                                                                 |
+| long                | 32-bit signed integer                                                                                                                                             |
+| short               | 16-bit signed integer                                                                                                                                             |
+| wchar_t             | Unicode character accepted only for 32-bit type libraries                                                                                                         |
+| BSTR                | Length-prefixed string                                                                                                                                            |
+| CURRENCY            | 8-byte, fixed-point number                                                                                                                                        |
+| DATE                | 64-bit, floating-point fractional number of days since December 30, 1899                                                                                          |
+| DECIMAL             | 98-bit, unsigned binary integer scaled by a power of 10. Provides size and scale for a number (as in coordinates)                                                 |
+| SCODE               | Built-in error type that corresponds to VT_ERROR. An SCODE (used on 16-bit systems only) does not contain the additional error information provided by an HRESULT |
+| VARIANT             | One of the variant data types (discussed in Automation objects)                                                                                                   |
+| IDispatch *         | Pointer to an `IDispatch` interface                                                                                                                               |
+| IUnknown *          | Pointer to an `IUnknown` interface                                                                                                                                |
+| SAFEARRAY(TypeName) | TypeName is any of the above types. An array of these types.                                                                                                      |
+| TypeName *          | TypeName is any of the above types. A pointer to a type.                                                                                                          |
+| void                | Allowed only as a function return type or in a parameter list to indicate no arguments                                                                            |
+| HRESULT             | Return type used for reporting error information in interfaces.                                                                                                   |
+| LPWSTR              | Unicode string accepted only for 32-bit type libraries                                                                                                            |
+| LPSTR               | Zero-terminated string                                                                                                                                            |
+
+## HRESULT Return Value Constants
+
+| Constant      | Meaning                                       |
+| ------------- | --------------------------------------------- |
+| S_OK          | Function completed and the result is TRUE     |
+| S_FALSE       | Function completed and the result is FALSE    |
+| NOERROR       | Function completed with no return value       |
+| E_UNEXPECTED  | An unexpected error has occured               |
+| E_INVALIDARG  | One of the user-supplied arguments is invalid |
+| E_OUTOFMEMORY | Sufficient memory could not be allocated      |
+| E_NOINTERFACE | The requested interface is not supported      |
+## HRESULT Macros
+
+| Syntax                                                      | Description                                                                       |
+| ----------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| SUCCEEDED(HRESULT status)                                   | If the severity field of the HRESULT is 0, returns TRUE; otherwise, returns FALSE |
+| FAILED(HRESULT status)                                      | If the severity field of the HRESULT is 1, returns TRUE; otherwise, returns FALSE |
+| HRESULT_CODE(HRESULT hr)                                    | Returns the error code field of the HRESULT                                       |
+| HRESULT_FACILITY(HRESULT hr)                                | Returns the facility field of the HRESULT                                         |
+| HRESULT_SEVERITY(HRESULT hr)                                | Returns the severity field of the HRESULT                                         |
+| HRESULT MAKE_HRESULT(SEVERITY sev, FACILITY fac, CODE code) | Creates a new HRESULT given a severity, a facility, and a status code             |
+
+User-defined error codes should have a code value between 0x0200 and 0xFFFF, as values 0x0000 and 0x01FF are used by the COM-defined FACILITY_ITF codes.
+## Full Reference
+
+[Microsoft Interface Definition Language - Win32 apps | Microsoft Learn](https://learn.microsoft.com/en-us/windows/win32/midl/midl-start-page)
+
+

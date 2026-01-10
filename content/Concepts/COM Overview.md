@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2025-11-09T10:47:27.620+05:30","published":"2025-11-09T10:47:27.620+05:30","tags":["theory"],"cssclasses":""}
+{"publish":true,"created":"2025-11-09T10:18:20.814+05:30","modified":"2025-12-27T11:59:26.753+05:30","published":"2025-12-27T11:59:26.753+05:30","tags":["theory"],"cssclasses":""}
 ---
 
 # Introduction
@@ -87,4 +87,4 @@ When the client is accessing a local server, and the proxy and stub are located 
 
 ^90083c
 
-A type library is essentially a language-neutral description of COM elements. Type libraries are typically used during **automation** to perform parameter type checking. Automation is the process of manipulating an application's COM objects from outside the application using special automation interfaces.
+A type library is essentially a language-neutral description of COM elements. Type libraries are typically used during **automation** to perform parameter type checking. Automation is the process of manipulating an application's COM objects from outside the application using special automation interfaces. 
