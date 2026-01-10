@@ -1,10 +1,10 @@
 ---
-{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T11:59:16.441+05:30","published":"2026-01-10T11:59:16.441+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T17:09:47.285+05:30","published":"2026-01-10T17:09:47.285+05:30","tags":["programming-preliminaries"],"cssclasses":""}
 ---
 
 > Please get [[Concepts/COM Overview\|an overview of COM]] before proceeding. 
 
-Lets create our first in-process server "UserInfo". ==This is a hypothetical COM object== which is used to maintain information about an individual person (name, dob, sex etc.). Here, each piece of information that is maintained is exposed as a property of the UserInfo COM object.
+Lets create our first in-process server "UserInfo". ==This is a hypothetical COM object== which is used to maintain information about an individual person (name, age, sex etc.). Here, each piece of information that is maintained is exposed as a property of the UserInfo COM object.
 
 | Property Name | Data Type     |
 | ------------- | ------------- |
