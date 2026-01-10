@@ -1,5 +1,5 @@
 ---
-{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:34:09.635+05:30","published":"2026-01-10T09:34:09.635+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T09:36:57.559+05:30","published":"2026-01-10T09:36:57.559+05:30","tags":["programming-preliminaries"],"cssclasses":""}
 ---
 
 > Please get [[Concepts/COM Overview\|an overview of COM]] before proceeding. 
@@ -270,9 +270,9 @@ STDMETHODIMP_(ULONG)CUserInfo::Release(void)
 }  //  Release
 ```
 
-Whenever the number of outstanding references to an object is decreased, `Release` is called to decrease the object's internal reference counter. When there are no outstanding references, the object deletes itself. Once the object has deleted itself, the global object counter `g_cObjects` is decremented to reflect the fact that there is now one less object in existence. After all of this, the `ServerCanUnloadNow` function is consulted to determine if it is all right for the entire COM server to unload itself from memory, a feat that would be accomplished by the `UnloadModule` function. But, because DLLs aren't responsible for unloading themselves, the `UnloadModule` function simply returns. ==However, if the UserInfo COM object were being implemented in an EXE server, `UnloadModule` would actually unload the EXE server from memory (this is different from the current discussion of in-process servers).==
+Whenever the number of outstanding references to an object is decreased, `Release` is called to decrease the object's internal reference counter. When there are no outstanding references, the object deletes itself. Once the object has deleted itself, the global object counter `g_cObjects` is decremented to reflect the fact that there is now one less object in existence. After all of this, the `ServerCanUnloadNow` function is consulted to determine if it is all right for the entire COM server to unload itself from memory, a feat that would be accomplished by the `UnloadModule` function. But, because DLLs aren't responsible for unloading themselves, the `UnloadModule` function simply returns. ==However, if the UserInfo COM object were being implemented in an EXE server,== `UnloadModule`==would actually unload the EXE server from memory (this is different from the current discussion of in-process servers).==
 
-> This bit might naturally make you wonder the significance of counting references (unless you don't care). Since COM is a very integral part of the working of Windows' operating system, it is good practice to keep tabs on created objects that constantly occupy memory. Why do we keep tabs? So that cleanup/garbage collection is organized and automated, leaving the programmer to do things that "really matter". But we all know that automation is an 80-20 concept that can't solve **all** problems. It is a programmer's responsibility to compensate for the "20", if not singlehandedly the "80".
+> This bit might naturally make you wonder the significance of counting references (unless you don't care). Since COM is a very integral part of the working of the Windows operating system, it is good practice to keep tabs on created objects that constantly occupy memory. Why do we keep tabs? So that cleanup/garbage collection is organized and automated, leaving the programmer to do things that "really matter". But we all know that automation is an 80-20 concept that can't solve **all** problems. It is a programmer's responsibility to compensate for the "20", if not singlehandedly the "80".
 
 ## Implementing a Class Factory
 
