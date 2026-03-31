@@ -1,8 +1,8 @@
 ---
 publish: true
 created: 2025-12-06T10:49:12.649+05:30
-modified: 2026-01-09T11:42:14.486+05:30
-published: 2026-01-09T11:42:14.486+05:30
+modified: 2026-03-31T13:32:00.936+05:30
+published: 2026-03-31T13:32:00.936+05:30
 tags:
   - theory
 ---
@@ -17,8 +17,7 @@ Not coincidentally, when COM objects are accessed across execution context or ma
 
 The Win32 SDK includes an IDL compiler called MIDL.exe that parses COM IDL files and generates several artifacts.
 
-![[IDL_MIDL.svg]]
-
+![[../Excalidraw/IDL_generator|1000x800]]
 MIDL.exe generates C/C++ compatible header files that contain the abstract base class definitions that correspond to the interfaces that are defined in the original IDL file. The fact that MIDL automatically generates the C/C++ header file implies that no COM interfaces should be defined manually in C++.  Having a single point of definition avoids having multiple incompatible versions of an interface definition that can fall out of sync over time. MIDL also generates source code that allows the interface to be used across thread, process, and host boundaries. Finally, MIDL can also generate a binary file that allows other COM-aware environments to produce language mappings for the interfaces defined in the original IDL file. This binary file is called a [[COM Overview#^90083c|type library]] and contains tokenized IDL in an efficiently parsed form.
 
 Type libraries are typically distributed as part of the implementation's executable and allow languages like Visual Basic, Java or Object Pascal to use the interfaces that are exposed by the implementation.
