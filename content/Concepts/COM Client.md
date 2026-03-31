@@ -1,16 +1,22 @@
 ---
-{"publish":true,"created":"2026-01-06T01:26:18.217+05:30","modified":"2026-01-10T20:59:06.690+05:30","published":"2026-01-10T20:59:06.690+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+publish: true
+created: 2026-01-06T01:26:18.217+05:30
+modified: 2026-01-10T20:59:06.690+05:30
+published: 2026-01-10T20:59:06.690+05:30
+tags:
+  - programming-preliminaries
 ---
 
 To test our COM server, we will build the `UserInfoClient` application. The `UserInfoClient` application will create and use the `UserInfo` COM object that we've just developed. Once the `UserInfo` object is created, we will use `QueryInterface` to change to the `IUserInfo` interface, which we will then use to set each of the `UserInfo` object's properties. After setting each property, we will retrieve, format and display their values via the Win32 API function `MessageBox`, which simply creates and displays a small window containing a message. We must recall what a COM client needs to do before doing all this:
 
-- Initializing [the COM library](https://learn.microsoft.com/en-us/windows/win32/com/the-com-library) 
+- Initializing [the COM library](https://learn.microsoft.com/en-us/windows/win32/com/the-com-library)
 - Obtaining initial and subsequent interfaces
 - Manipulating the COM object (as discussed)
-- Release the COM object when it is no longer needed. 
+- Release the COM object when it is no longer needed.
 - Un-initializing the COM library.
 
 I'll demonstrate how to use in-process servers and out-of-process servers.
+
 # In-Process
 
 ## Initializing the COM library
@@ -64,7 +70,8 @@ CoUninitialize();
 
 # Out-of-process
 
-- - -
+---
+
 # Source
 
 [Full source is provided here](https://github.com/laughtersec/com-servers-and-clients)

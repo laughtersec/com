@@ -1,8 +1,13 @@
 ---
-{"publish":true,"created":"2025-12-25T11:40:34.889+05:30","modified":"2026-01-10T20:59:47.149+05:30","published":"2026-01-10T20:59:47.149+05:30","tags":["programming-preliminaries"],"cssclasses":""}
+publish: true
+created: 2025-12-25T11:40:34.889+05:30
+modified: 2026-01-10T20:59:47.149+05:30
+published: 2026-01-10T20:59:47.149+05:30
+tags:
+  - programming-preliminaries
 ---
 
-> Please get [[Concepts/COM Overview\|an overview of COM]] before proceeding. 
+> Please get [[COM Overview|an overview of COM]] before proceeding.
 
 Lets create our first in-process server "UserInfo". ==This is a hypothetical COM object== which is used to maintain information about an individual person (name, age, sex etc.). Here, each piece of information that is maintained is exposed as a property of the UserInfo COM object.
 
@@ -13,6 +18,7 @@ Lets create our first in-process server "UserInfo". ==This is a hypothetical COM
 | Sex           | unsigned char |
 
 The process can be broken down into these simple steps:
+
 - A GUID will be allocated for use as CLSIDs, IIDs and LIBIDs
 - Interfaces that would be exposed will be defined
 - Then they will be implemented.
@@ -22,6 +28,7 @@ The process can be broken down into these simple steps:
 After creating the in-process server, we would use it via a COM client.
 
 The process can be broken down into these simple steps:
+
 - Load an in-process server.
 - Initialize the COM library.
 - Obtain initial and subsequent interface pointers
@@ -54,7 +61,7 @@ cf79f686-dc42-4986-97c5-5f0d0bdcdfa8
 
 ## Defining the object's interfaces
 
-> Please understand [[Concepts/IDL]] before proceeding.
+> Please understand [[IDL]] before proceeding.
 
 The work of defining objects and interfaces is done using IDL. We can define COM objects, interfaces and type libraries using it.
 
@@ -104,13 +111,13 @@ interface IUserInfo : IUnknown
 
 [2 of the attributes](https://learn.microsoft.com/en-us/windows/win32/midl/interface-header-attributes) are interface header attributes, and [one of them](https://learn.microsoft.com/en-us/windows/win32/midl/type-library-attributes) is a type library attribute.
 
-Now obviously we don't need to *define* the functions of an interface we are inheriting from, but we do need to *include* their definition, using the `import` statement. In our example, we did this by importing `unknwn.idl`.
+Now obviously we don't need to _define_ the functions of an interface we are inheriting from, but we do need to _include_ their definition, using the `import` statement. In our example, we did this by importing `unknwn.idl`.
 
 Every interface is required to return a `HRESULT` so that the client can receive status information regarding the success or failure of an operation. To facilitate traditional function-specific return values, a function must declare a pointer to memory that will receive the return value, and have the function return information via the pointer. This pointer must include both the `out` and `retval` attributes, and should always be the last parameter in the list.
 
 While these attributes identify the purpose of a parameter, each parameter still needs a data type. Like all languages, IDL has a set of intrinsic data types it supports.
 
-Once the IUserInfo interface is defined, we can use it in the definition of the *UserInfo* object. It will be defined as an element of the UserInfo library element. The library element represents the type library as a whole, and is identified by a library identifier (LIBID). LIBIDs, like CLSIDs and IIDs, are also GUIDs. Following is the IDL definition of the UserInfo library and UserInfo object:
+Once the IUserInfo interface is defined, we can use it in the definition of the _UserInfo_ object. It will be defined as an element of the UserInfo library element. The library element represents the type library as a whole, and is identified by a library identifier (LIBID). LIBIDs, like CLSIDs and IIDs, are also GUIDs. Following is the IDL definition of the UserInfo library and UserInfo object:
 
 ```cpp
 //LIBID_UserInfo
@@ -178,17 +185,17 @@ We can see the following generated files
 
 | File Name    | Purpose                                                                                                                                                                                 | Important to note  |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| UserInfo_p.c | Contains code that can be used to generate proxy/stub pair for marshaling and unmarshaling `UserInfo` function calls.                                                                   |                    |
+| UserInfo\_p.c | Contains code that can be used to generate proxy/stub pair for marshaling and unmarshaling `UserInfo` function calls.                                                                   |                    |
 | dlldata.c    | Same as above. And in the case of in-process servers which are located in                                                                                                               |                    |
 | UserInfo.h   | Contains the C and C++ definitions for the `IUserInfo` interface is declared as a C++ abstract class, which means that at least one of its member functions is a pure virtual function. |                    |
-| UserInfo_i.c | Contains the definitions of the human-readable names that are used to refer to the `IUserInfo` interface, the type library, and the `UserInfo` object class.                            |                    |
+| UserInfo\_i.c | Contains the definitions of the human-readable names that are used to refer to the `IUserInfo` interface, the type library, and the `UserInfo` object class.                            |                    |
 | UserInfo.tlb | Actual compiled type library, essentially a language-independent header file.                                                                                                           | Easier to analyze. |
 
 So far, we just defined the skeleton, now we can start working on the implementation (the procedures that the COM object can carry out).
 
 ## Implementing Interface Functions
 
-While all of the interfaces have been defined, they are defined as C++ abstract base classes, which means that the C++ classes that define them cannot provide an implementation for them. ==Implementation is provided in the C++ classes that subsequently inherit from the abstract base class==. Seems counter-intuitive right? That's the academic dogma giving you a stroke. [Here you go](https://stackoverflow.com/questions/2697783/what-does-program-to-interfaces-not-implementations-mean). 
+While all of the interfaces have been defined, they are defined as C++ abstract base classes, which means that the C++ classes that define them cannot provide an implementation for them. ==Implementation is provided in the C++ classes that subsequently inherit from the abstract base class==. Seems counter-intuitive right? That's the academic dogma giving you a stroke. [Here you go](https://stackoverflow.com/questions/2697783/what-does-program-to-interfaces-not-implementations-mean).
 
 We can create a C++ class which will inherit from our interface `IUserInfo` abstract base class. And in this class we will then provide the implementation of it.
 
@@ -223,7 +230,7 @@ class CUserInfo : IUserInfo
 
 Now, all that remains is providing an implementation for each function prototype/member function.
 
-The first COM-related function is `QueryInterface` which is used for interface navigation. If a client calls `QueryInterface` with the IID of a supported interface, the object should respond by returning a pointer to that particular interface. ==In the case of the ==`UserInfo` ==COM object, if a client calls== `QueryInterface` ==with the IID for either== `IUnknown`==or== `IUserInfo`==, ==`UserInfo` ==should return a pointer to that interface.== In the following example, we can see how the `CUserInfo::QueryInterface` object casts itself into either a `IUserInfo` pointer or an [[Concepts/IUnknown]] pointer, depending on the requested IID. ==If the requested interface is supported,== `QueryInterface` ==calls ==`AddRef` ==to increase the reference count in accordance with COM's reference counting rules.== If all goes well, `QueryInterface` reports `NOERROR` to the client. ==If a client requests an unsupported interface,== `E_NOINTERFACE` ==is returned to notify the client that the requested interface is not supported.== 
+The first COM-related function is `QueryInterface` which is used for interface navigation. If a client calls `QueryInterface` with the IID of a supported interface, the object should respond by returning a pointer to that particular interface. ==In the case of the ==`UserInfo` ==COM object, if a client calls== `QueryInterface` ==with the IID for either== `IUnknown`==or== `IUserInfo`==, ==`UserInfo` ==should return a pointer to that interface.== In the following example, we can see how the `CUserInfo::QueryInterface` object casts itself into either a `IUserInfo` pointer or an [[IUnknown]] pointer, depending on the requested IID. ==If the requested interface is supported,== `QueryInterface` ==calls ==`AddRef` ==to increase the reference count in accordance with COM's reference counting rules.== If all goes well, `QueryInterface` reports `NOERROR` to the client. ==If a client requests an unsupported interface,== `E_NOINTERFACE` ==is returned to notify the client that the requested interface is not supported.==
 
 ```cpp
 STDMETHODIMP CUserInfo::QueryInterface(REFIID iid, LPVOID *ppv)
@@ -250,7 +257,7 @@ STDMETHODIMP_(ULONG)CUserInfo::AddRef(void)
 }  //  AddRef
 ```
 
-Now the `Release` function is the complete opposite of the `AddRef` function. 
+Now the `Release` function is the complete opposite of the `AddRef` function.
 
 ```cpp
 STDMETHODIMP_(ULONG)CUserInfo::Release(void)
@@ -291,6 +298,7 @@ class CUserInfoFactory : IClassFactory
 ```
 
 The `IClassFactory` interface has only two methods:
+
 - `LockServer`: called during COM server unloads.
 
 ```cpp
@@ -438,7 +446,7 @@ STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv)
 
 ## Server Unloading
 
-Typically, when the last reference on the last object being served by a server is released, the server is unloaded. However, if the server is responsible for creating objects that typically have a short life span, it may be desirable to keep the server loaded in memory even when it isn't serving any objects, thus eliminating the overhead associated with loading and unloading the server. To accommodate this functionality, the `IClassFactory` interface supports the `LockServer` function, as seen in [[Concepts/In-Process Servers#Implementing a Class Factory]]. `LockServer` takes a single boolean parameter that determines whether or not the server should be "locked" in memory. If the value is true, the global reference counter is incremented. If the value is false, the global reference counter is decremented. ==Only when there are no locks and no instantiated objects can the server unload==.
+Typically, when the last reference on the last object being served by a server is released, the server is unloaded. However, if the server is responsible for creating objects that typically have a short life span, it may be desirable to keep the server loaded in memory even when it isn't serving any objects, thus eliminating the overhead associated with loading and unloading the server. To accommodate this functionality, the `IClassFactory` interface supports the `LockServer` function, as seen in [[#Implementing a Class Factory]]. `LockServer` takes a single boolean parameter that determines whether or not the server should be "locked" in memory. If the value is true, the global reference counter is incremented. If the value is false, the global reference counter is decremented. ==Only when there are no locks and no instantiated objects can the server unload==.
 
 ## Putting it all together
 
@@ -653,10 +661,10 @@ extern "C" BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserve
 }
 ```
 
-- - - 
+---
+
 # Source
 
 [Full source is provided here](https://github.com/laughtersec/com-servers-and-clients)
 
 After a bit of searching, I found a sample project from Microsoft itself: https://github.com/microsoft/component-object-model-sample
-
