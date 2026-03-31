@@ -5,8 +5,8 @@ on:
     branches:
       - v4
  
-env:
-  THEME_NAME: encore
+#env:
+#  THEME_NAME: encore
  
 permissions:
   contents: read
