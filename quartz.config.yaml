@@ -322,7 +322,7 @@ plugins:
     enabled: false
     order: 50
     options:
-      theme: cyberglow
+      theme: encore
   - source: github:quartz-community/reader-mode
     enabled: true
     options: {}
