@@ -365,7 +365,7 @@ plugins:
       priority: 15
       display: all
   - source: github:quartz-community/stacked-pages
-    enabled: true
+    enabled: false
     options:
       animateTransitions: true
     order: 50
