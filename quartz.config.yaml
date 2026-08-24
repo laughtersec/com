@@ -2,7 +2,7 @@
 configuration:
   locale: en-US
   baseUrl: laughtersec.github.io/com
-  pageTitle: warez
+  pageTitle: com
   enableSPA: false
   enablePopovers: true
   analytics:
