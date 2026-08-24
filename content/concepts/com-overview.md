@@ -2,7 +2,7 @@
 publish: true
 title: COM Overview
 created: 2025-11-09T04:48:20.814Z
-modified: 2026-08-24T18:57:51.108Z
+modified: 2026-08-24T19:22:26.642Z
 tags:
   - theory
 ---
@@ -20,13 +20,13 @@ tags:
 - In its role as the glue between objects, OLE implements a wide variety of interfaces and defines a whole lot more.
 - Implementation of an interface means that OLE supplies code that performs the actions expected of each of the member functions in the interface.
 
-![[../excalidraw/com_objects_and_interfaces]]
+![[excalidraw/com_objects_and_interfaces.excalidraw]]
 
-![[../excalidraw/com_objects_and_interfaces]]
+![[excalidraw/com_objects_and_interfaces.excalidraw]]
 
 In this example, GameEnvironment is your typical COM object, with its underlying interfaces. But in the following example, you have your typical public object, not using COM.
 
-![[../excalidraw/normal_objects]]
+![[excalidraw/normal_objects.excalidraw]]
 
 Every interface inside a COM object is also uniquely identifiable. And a separate pointer is required to access each interface. Once an interface is exposed for client usage, it _must never be changed_ (they are **immutable**).
 
