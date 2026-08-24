@@ -2,7 +2,7 @@
 publish: true
 title: COM Overview
 created: 2025-11-09T04:48:20.814Z
-modified: 2026-08-24T17:31:54.352Z
+modified: 2026-08-24T18:02:26.266Z
 tags:
   - theory
 ---
@@ -138,7 +138,7 @@ When the client is accessing a local server, and the proxy and stub are located 
 
 > RPC is the basis of DCOM.
 
-![[../Excalidraw/com_proxies_and_stubs|1000x800]]
+![[excalidraw/com_proxies_and_stubs.excalidraw|com_proxies_and_stubs|1000x800]]
 
 ## Type Libraries
 
