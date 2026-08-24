@@ -366,7 +366,8 @@ plugins:
       display: all
   - source: github:quartz-community/stacked-pages
     enabled: true
-    options: {}
+    options:
+      animateTransitions: true
     order: 50
   - source: github:quartz-community/syntax-highlighting
     enabled: true
