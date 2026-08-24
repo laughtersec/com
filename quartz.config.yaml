@@ -420,3 +420,5 @@ layout:
         right: []
     content:
       template: full-width
+    tag:
+      template: full-width
