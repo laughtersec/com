@@ -2,7 +2,7 @@
 publish: true
 title: COM Overview
 created: 2025-11-09T04:48:20.814Z
-modified: 2026-08-24T19:22:26.642Z
+modified: 2026-08-24T19:23:39.075Z
 tags:
   - theory
 ---
@@ -123,7 +123,7 @@ This level of "indirection" is all that is required for COM to transparently pro
 
 > When you obtain an interface pointer, you are actually receiving a pointer to a pointer that is pointing to a VTBL of function pointers. An interface is actually a pointer to a VTBL of function pointers.
 
-![interfaces\_and\_vtables](excalidraw/interfaces_and_vtables.md)
+![[excalidraw/interfaces_and_vtables.excalidraw]]
 
 Obviously, the pointers will only be able to access information within a single process space. If a server is out-of-process, client interface pointers are not allowed to access information in the server's process space (again, obviously). To solve this problem, COM relies on a special piece of in-process software called a proxy. In the case where you ever receive an interface pointer to an out-of-process object, you really are just receiving a pointer to a proxy. The proxy exists to take the place of the object and to forward any client requests to another special piece of software called a _stub_.
 
