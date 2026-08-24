@@ -2,7 +2,7 @@
 publish: true
 title: COM Overview
 created: 2025-11-09T04:48:20.814Z
-modified: 2026-08-24T19:23:39.075Z
+modified: 2026-08-24T19:27:37.753Z
 tags:
   - theory
 ---
@@ -19,8 +19,6 @@ tags:
   -
 - In its role as the glue between objects, OLE implements a wide variety of interfaces and defines a whole lot more.
 - Implementation of an interface means that OLE supplies code that performs the actions expected of each of the member functions in the interface.
-
-![[excalidraw/com_objects_and_interfaces.excalidraw]]
 
 ![[excalidraw/com_objects_and_interfaces.excalidraw]]
 
@@ -140,7 +138,7 @@ When the client is accessing a local server, and the proxy and stub are located 
 
 > RPC is the basis of DCOM.
 
-![[excalidraw/com_proxies_and_stubs.excalidraw|com_proxies_and_stubs|1000x800]]
+![[excalidraw/com_proxies_and_stubs.excalidraw|com_proxies_and_stubs]]
 
 ## Type Libraries
 
