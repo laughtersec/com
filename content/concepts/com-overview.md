@@ -2,7 +2,7 @@
 publish: true
 title: COM Overview
 created: 2025-11-09T04:48:20.814Z
-modified: 2026-08-24T18:02:26.266Z
+modified: 2026-08-24T18:02:48.229Z
 tags:
   - theory
 ---
