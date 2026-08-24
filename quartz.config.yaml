@@ -1,13 +1,13 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
-  pageTitleSuffix: ""
-  enableSPA: true
-  enablePopovers: true
-  analytics:
-    provider: plausible
   locale: en-US
   baseUrl: laughtersec.github.io/com
+  pageTitle: warez
+  enableSPA: false
+  enablePopovers: true
+  analytics:
+    provider: google
+    tagId: G-LDGDRF6N5V
   ignorePatterns:
     - private
     - templates
@@ -16,6 +16,7 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
+      title: Libre Barcode 39
       header: Schibsted Grotesk
       body: Source Sans Pro
       code: IBM Plex Mono
@@ -41,215 +42,224 @@ configuration:
         highlight: rgba(143, 159, 169, 0.15)
         textHighlight: "#b3aa0288"
 plugins:
-  - source: "@quartz-community/created-modified-date"
+  - source: github:quartz-community/alias-redirects
     enabled: true
     options:
-      defaultDateType: modified
-      priority:
-        - frontmatter
-        - git
-        - filesystem
-    order: 10
-  - source: "@quartz-community/syntax-highlighting"
+      enableCaseRedirects: true
+    order: 50
+  - source: github:quartz-community/article-title
+    enabled: true
+    options: {}
+    order: 50
+    layout:
+      position: beforeBody
+      priority: 10
+      display: all
+  - source: github:quartz-community/backlinks
     enabled: true
     options:
-      theme:
-        light: github-light
-        dark: github-dark
-      keepBackground: false
-    order: 20
-  - source: "@quartz-community/obsidian-flavored-markdown"
-    enabled: true
-    options:
-      comments: true
-      highlight: true
-      wikilinks: true
-      callouts: true
-      mermaid: true
-      parseTags: true
-      parseArrows: true
-      parseBlockReferences: true
-      enableInHtmlEmbed: false
-      enableYouTubeEmbed: true
-      enableVideoEmbed: true
-      enableCheckbox: true
-    order: 30
-  - source: "@quartz-community/github-flavored-markdown"
-    enabled: true
-    order: 40
-  - source: "@quartz-community/table-of-contents"
-    enabled: true
+      hideWhenEmpty: true
     order: 50
     layout:
       position: right
       priority: 30
-  - source: "@quartz-community/crawl-links"
+      display: all
+  - source: github:quartz-community/bases-page
     enabled: true
     options:
-      markdownLinkResolution: shortest
-    order: 60
-  - source: "@quartz-community/description"
-    enabled: true
-    order: 70
-  - source: "@quartz-community/latex"
+      defaultViewType: table
+      linkResolution: shortest
+    order: 50
+  - source: github:quartz-community/breadcrumbs
     enabled: true
     options:
-      renderEngine: katex
-    order: 80
-  - source: "@quartz-community/citations"
-    enabled: false
-    order: 85
-  - source: "@quartz-community/hard-line-breaks"
-    enabled: true
-    order: 90
-  - source: "@quartz-community/ox-hugo"
-    enabled: false
-    order: 91
-  - source: "@quartz-community/roam"
-    enabled: false
-    order: 92
-  - source: "@quartz-community/quartz-fonts"
-    enabled: true
-  - source: "@quartz-themes/core"
+      spacerSymbol: ❯
+      rootName: Home
+      resolveFrontmatterTitle: true
+      showCurrentPage: true
+    order: 50
+    layout:
+      position: beforeBody
+      priority: 5
+      display: all
+  - source: github:quartz-community/canvas-page
     enabled: true
     options:
-      theme: default
-      mode: both
-  - source: "@quartz-community/remove-draft"
-    enabled: true
-  - source: "@quartz-community/explicit-publish"
+      enableInteraction: true
+      initialZoom: 1
+      minZoom: 0.1
+      maxZoom: 5
+    order: 50
+  - source: github:quartz-community/citations
     enabled: false
-  - source: "@quartz-community/unlisted-pages"
+    options: {}
+    order: 50
+  - source: github:quartz-community/cname
     enabled: true
     options: {}
-    order: 45
-  - source: "@quartz-community/encrypted-pages"
+    order: 50
+  - source: github:quartz-community/comments
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/content-index
+    enabled: true
+    options:
+      enableSiteMap: true
+      enableRSS: true
+      rssLimit: 10
+      rssFullHtml: false
+      rssSlug: index
+      includeEmptyFiles: true
+    order: 50
+  - source: github:quartz-community/content-meta
+    enabled: true
+    options:
+      showReadingTime: true
+      showComma: true
+    order: 50
+    layout:
+      position: beforeBody
+      priority: 20
+      display: all
+  - source: github:quartz-community/content-page
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/crawl-links
+    enabled: true
+    options:
+      markdownLinkResolution: absolute
+      prettyLinks: true
+      openLinksInNewTab: false
+      lazyLoad: false
+      externalLinkIcon: true
+      disableBrokenWikilinks: false
+    order: 60
+  - source: github:quartz-community/created-modified-date
+    enabled: true
+    options:
+      priority:
+        - frontmatter
+        - git
+        - filesystem
+      defaultDateType: modified
+    order: 10
+  - source: github:quartz-community/darkmode
+    enabled: true
+    options: {}
+    order: 50
+    layout:
+      position: left
+      priority: 30
+      display: all
+  - source: github:quartz-community/description
+    enabled: true
+    options:
+      descriptionLength: 150
+      maxDescriptionLength: 300
+      replaceExternalLinks: true
+    order: 70
+  - source: github:quartz-community/encrypted-pages
     enabled: true
     options:
       iterations: 600000
       passwordField: password
       unlistWhenEncrypted: false
       outputPath: static/encryptedContentIndex.json
-  - source: "@quartz-community/stacked-pages"
-    enabled: false
+    order: 900
     layout:
-      position: afterBody
-      priority: 50
+      position: body
+      priority: 100
       display: all
-  - source: "@quartz-community/alias-redirects"
-    enabled: true
-  - source: "@quartz-community/content-index"
-    enabled: true
-    options:
-      enableSiteMap: true
-      enableRSS: true
-  - source: "@quartz-community/favicon"
-    enabled: true
-  - source: "@quartz-community/og-image"
-    enabled: true
-  - source: "@quartz-community/cname"
-    enabled: true
-  - source: "@quartz-community/canvas-page"
-    enabled: true
-  - source: "@quartz-community/content-page"
-    enabled: true
-  - source: "@quartz-community/folder-page"
-    enabled: true
-  - source: "@quartz-community/tag-page"
-    enabled: true
-  - source: "@quartz-community/explorer"
-    enabled: true
-    layout:
-      position: left
-      priority: 50
-  - source: "@quartz-community/graph"
-    enabled: true
-    layout:
-      position: right
-      priority: 10
-  - source: "@quartz-community/search"
-    enabled: true
-    layout:
-      position: left
-      priority: 20
-      group: toolbar
-      groupOptions:
-        grow: true
-  - source: "@quartz-community/backlinks"
-    enabled: true
-    layout:
-      position: right
-      priority: 50
-  - source: "@quartz-community/article-title"
-    enabled: true
-    layout:
-      position: beforeBody
-      priority: 10
-  - source: "@quartz-community/content-meta"
-    enabled: true
-    layout:
-      position: beforeBody
-      priority: 20
-  - source: "@quartz-community/tag-list"
-    enabled: false
-    layout:
-      position: beforeBody
-      priority: 30
-  - source: "@quartz-community/page-title"
-    enabled: true
-    layout:
-      position: left
-      priority: 10
-  - source: "@quartz-community/darkmode"
-    enabled: true
-    layout:
-      position: left
-      priority: 30
-      group: toolbar
-  - source: "@quartz-community/reader-mode"
-    enabled: true
-    layout:
-      position: left
-      priority: 35
-      group: toolbar
-  - source: "@quartz-community/breadcrumbs"
-    enabled: true
-    layout:
-      position: beforeBody
-      priority: 5
-      condition: not-index
-  - source: "@quartz-community/comments"
-    enabled: false
-    options:
-      provider: giscus
-      options: {}
-    layout:
-      position: afterBody
-      priority: 10
-  - source: "@quartz-community/footer"
-    enabled: true
-    options:
-      links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
-    layout:
-      position: footer
-      priority: 50
-  - source: "@quartz-community/recent-notes"
-    enabled: false
-  - source: "@quartz-community/spacer"
-    enabled: true
-    options: {}
-    order: 25
-    layout:
-      position: left
-      priority: 25
-      display: mobile-only
-  - source: "@quartz-community/bases-page"
+  - source: github:quartz-community/explicit-publish
     enabled: true
     options: {}
     order: 50
-  - source: "@quartz-community/note-properties"
+  - source: github:quartz-community/explorer
+    enabled: true
+    options:
+      folderDefaultState: collapsed
+      folderClickBehavior: link
+      useSavedState: true
+    order: 50
+    layout:
+      position: left
+      priority: 50
+      display: all
+  - source: github:quartz-community/favicon
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/folder-page
+    enabled: true
+    options:
+      showFolderCount: true
+      showSubfolders: true
+    order: 50
+  - source: github:quartz-community/footer
+    enabled: true
+    options:
+      links:
+        GitHub: https://github.com/laughtersec/warez
+        Malectrica Discord: https://discord.gg/jByxKBmJ9T
+    order: 50
+    layout:
+      position: footer
+      priority: 50
+      display: all
+  - source: github:quartz-community/github-flavored-markdown
+    enabled: true
+    options:
+      enableSmartyPants: true
+      linkHeadings: true
+    order: 40
+  - source: github:quartz-community/graph
+    enabled: true
+    options:
+      localGraph:
+        drag: true
+        zoom: true
+        depth: 1
+        scale: 1.1
+        repelForce: 0.5
+        centerForce: 0.3
+        linkDistance: 30
+        fontSize: 0.6
+        opacityScale: 1
+        showTags: true
+        removeTags: []
+        focusOnHover: false
+        enableRadial: false
+      globalGraph:
+        drag: true
+        zoom: true
+        depth: -1
+        scale: 0.9
+        repelForce: 0.5
+        centerForce: 0.2
+        linkDistance: 30
+        fontSize: 0.6
+        opacityScale: 1
+        showTags: true
+        removeTags: []
+        focusOnHover: true
+        enableRadial: true
+    order: 50
+    layout:
+      position: right
+      priority: 10
+      display: all
+  - source: github:quartz-community/hard-line-breaks
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/latex
+    enabled: true
+    options:
+      renderEngine: katex
+    order: 80
+  - source: github:quartz-community/note-properties
     enabled: true
     options:
       includeAll: false
@@ -266,17 +276,140 @@ plugins:
       position: beforeBody
       priority: 15
       display: all
-  - source: "@quartz-community/obsidian-plugin-excalidraw"
+  - source: github:quartz-community/obsidian-flavored-markdown
     enabled: true
+    options:
+      comments: true
+      highlight: true
+      wikilinks: true
+      callouts: true
+      mermaid: true
+      parseTags: true
+      parseBlockReferences: true
+      enableInHtmlEmbed: false
+      enableYouTubeEmbed: true
+      enableTweetEmbed: true
+      enableVideoEmbed: true
+      enableCheckbox: false
+      enableObsidianUri: true
+    order: 30
+  - source: github:quartz-community/og-image
+    enabled: true
+    options:
+      colorScheme: lightMode
+      width: 1200
+      height: 630
+      excludeRoot: false
+      defaultTitle: Untitled
+      defaultDescription: No description provided
+    order: 50
+  - source: github:quartz-community/ox-hugo
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/page-title
+    enabled: true
+    options: {}
+    order: 50
+    layout:
+      position: left
+      priority: 10
+      display: all
+  - source:
+      name: quartz-themes
+      repo: github:saberzero1/quartz-themes
+      subdir: plugin
+    enabled: false
+    order: 50
+    options:
+      theme: cyberglow
+  - source: github:quartz-community/reader-mode
+    enabled: true
+    options: {}
+    order: 50
+    layout:
+      position: left
+      priority: 35
+      display: all
+  - source: github:quartz-community/recent-notes
+    enabled: false
+    options: {}
+    order: 50
+  - source: github:quartz-community/remove-draft
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/roam
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/search
+    enabled: true
+    options:
+      enablePreview: true
+      fieldPriority:
+        - title
+        - content
+        - tags
+    order: 50
+    layout:
+      position: left
+      priority: 20
+      display: all
+  - source: github:quartz-community/spacer
+    enabled: true
+    options: {}
+    order: 15
+    layout:
+      position: left
+      priority: 15
+      display: all
+  - source: github:quartz-community/stacked-pages
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/syntax-highlighting
+    enabled: true
+    options:
+      theme:
+        light: github-light
+        dark: github-dark
+      keepBackground: false
+      clipboard: true
+      tokenClassification: true
+    order: 20
+  - source: github:quartz-community/table-of-contents
+    enabled: true
+    options:
+      maxDepth: 3
+      minEntries: 1
+      showByDefault: true
+      collapseByDefault: false
+      layout: modern
+    order: 50
+    layout:
+      position: right
+      priority: 50
+      display: all
+  - source: github:quartz-community/tag-list
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/tag-page
+    enabled: true
+    options:
+      numPages: 10
+    order: 50
+  - source: github:quartz-community/obsidian-plugin-excalidraw
+    enabled: true
+    order: 50
     options:
       enableInteraction: true
       darkMode: auto
       exportPadding: 20
-    order: 50
 layout:
   groups:
     toolbar:
-      priority: 35
       direction: row
       gap: 0.5rem
   byPageType:
@@ -285,16 +418,3 @@ layout:
         beforeBody: []
         left: []
         right: []
-    content: {}
-    folder:
-      exclude:
-        - reader-mode
-      positions:
-        right: []
-    tag:
-      exclude:
-        - reader-mode
-      positions:
-        right: []
-    canvas: {}
-    bases: {}
