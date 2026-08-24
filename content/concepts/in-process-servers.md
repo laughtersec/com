@@ -2,7 +2,7 @@
 publish: true
 title: In-Process Servers
 created: 2025-12-25T06:10:34.889Z
-modified: 2026-08-24T15:28:38.785Z
+modified: 2026-08-24T19:30:04.116Z
 tags:
   - programming-preliminaries
 ---
@@ -61,7 +61,7 @@ cf79f686-dc42-4986-97c5-5f0d0bdcdfa8
 
 ## Defining the object's interfaces
 
-> Please understand [[idl]] before proceeding.
+> Please understand [[concepts/idl|IDL]] before proceeding.
 
 The work of defining objects and interfaces is done using IDL. We can define COM objects, interfaces and type libraries using it.
 
