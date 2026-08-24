@@ -2,7 +2,7 @@
 publish: true
 title: COM Overview
 created: 2025-11-09T04:48:20.814Z
-modified: 2026-08-24T17:22:29.756Z
+modified: 2026-08-24T17:31:54.352Z
 tags:
   - theory
 ---
@@ -68,9 +68,7 @@ class CSomeObject : IUnknown
 };
 ```
 
-> A better example can be seen [[in-process-servers#Implementing Interface Functions|here]].
-
-> A better example can be seen in [in-process-servers](concepts/in-process-servers.md)
+> A better example can be seen in [[concepts/in-process-servers#Implementing Interface Functions|here]].
 
 ## Object Versioning and Evolution
 
