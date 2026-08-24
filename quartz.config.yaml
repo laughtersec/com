@@ -414,11 +414,6 @@ layout:
       gap: 0.5rem
   byPageType:
     "404":
-      positions:
-        beforeBody: []
-        left: []
-        right: []
-    content:
       template: full-width
-    tag:
+    bases:
       template: full-width
