@@ -1,12 +1,10 @@
 ---
 publish: true
 created: 2026-01-22T07:10:18.549Z
-modified: 2026-08-24T18:43:07.962Z
+modified: 2026-08-24T18:47:36.100Z
 tags:
   - excalidraw
 ---
-
-==⚠  Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠== You can decompress Drawing data with the command palette: 'Decompress current Excalidraw file'. For more info check in plugin settings under 'Saving'
 
 # Excalidraw Data
 
