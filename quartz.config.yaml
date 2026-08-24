@@ -418,3 +418,5 @@ layout:
         beforeBody: []
         left: []
         right: []
+    content:
+      template: full-width
