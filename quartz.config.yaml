@@ -201,7 +201,7 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/laughtersec/warez
+        GitHub: https://github.com/laughtersec/
         Malectrica Discord: https://discord.gg/jByxKBmJ9T
     order: 50
     layout:
