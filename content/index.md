@@ -1,7 +1,8 @@
 ---
 publish: true
+title: Home
 created: 2025-11-09T04:48:20.815Z
-modified: 2026-08-24T15:24:46.567Z
+modified: 2026-08-25T10:33:38.173Z
 ---
 
 # Component Object Model
