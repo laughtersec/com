@@ -178,9 +178,8 @@ plugins:
   - source: github:quartz-community/explorer
     enabled: true
     options:
-      folderDefaultState: collapsed
       folderClickBehavior: link
-      useSavedState: true
+      useSavedState: false
     order: 50
     layout:
       position: left
