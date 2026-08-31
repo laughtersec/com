@@ -76,8 +76,6 @@ Think of it as a female socket (the interface) to which a male socket (the COM o
 - To achieve this, COM defines a binary standard, which specifies how an object is laid out in memory at run time.
 - By defining how an object is laid out in memory, COM allows any language that is capable of reproducing the required memory layout to create a COM _object_.
 
-![[svg/COM.svg]]
-
 https://learn.microsoft.com/en-us/windows/win32/com/com-technical-overview
 
 Think of the working of COM as "astral projection", where a sleeping body with its attributes and functions (dll) is walking in the form of pure energy (an instance). It is most alive in pure energy form and can interact with the world physically. It can also multiply. And to control it, you control the instance(s), not the binary format.

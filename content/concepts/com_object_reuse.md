@@ -12,7 +12,7 @@ Often the COM objects at your disposal may provide only a limited subset of the 
 
 Containment is the simplest form of COM object reuse. In containment, the new COM object, known as ==the outer object, simply acts as a client of the existing COM object==, which is known as the _inner_ object. Like all COM objects, the outer object exposes its own set of interfaces. However, instead of being solely responsible for providing the implementation for each of its interface functions, the outer object relies on the functionality supplied by the inner object for assistance.
 
-![[concepts/svg/containment.svg]]
+![[excalidraw/containment.excalidraw]]
 
 Here is an example:
 
@@ -28,7 +28,7 @@ The **material** here is the COM aggregate, and the **mass of fragments** here a
 The inner object's (the COM object's) interfaces are exposed directly as if they were implemented on the outer object itself.
 Unlike containment, in which the inner object has no idea that it is being used as part of another object, in aggregation, the inner object is not only aware that it is being used as part of an aggregate, it must be developed specifically to support aggregation. Typically you can only reach the interface of a COM object via a pointer to it, and not the interface of another COM object. Querying interfaces that belong to a COM object to which we don't have a pointer to is not conventionally possible. So how do we "aggregate" two COM objects?
 
-![[concepts/svg/aggregation.svg]]
+![[excalidraw/aggregation.excalidraw]]
 
 Thankfully, the COM library provides `CoCreateInstance`, which enables the much needed "cooperation" between the inner and outer objects (namely the pointer to the `IUnknown` interfaces of both objects). When the outer object creates the inner object using `CoCreateInstance`, the two objects exchange `IUnknown` interfaces. The outer object supplies a pointer to its `IUnknown` interface to the inner object as the second parameter to `CoCreateInstance`, while the inner object returns a pointer to its `IUnknown` interface to the outer object as the final parameter to `CoCreateInstance`.
 

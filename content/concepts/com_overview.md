@@ -1,6 +1,9 @@
 ---
 publish: true
+title: COM Overview
 created: 2026-08-31T04:42:47.226Z
+tags:
+  - theory
 ---
 
 # Introduction
@@ -16,11 +19,11 @@ created: 2026-08-31T04:42:47.226Z
 - In its role as the glue between objects, OLE implements a wide variety of interfaces and defines a whole lot more.
 - Implementation of an interface means that OLE supplies code that performs the actions expected of each of the member functions in the interface.
 
-![[com_objects_and_interfaces.excalidraw]]
+![[excalidraw/com_objects_and_interfaces.excalidraw]]
 
 In this example, GameEnvironment is your typical COM object, with its underlying interfaces. But in the following example, you have your typical public object, not using COM.
 
-![[normal_objects.excalidraw]]
+![[excalidraw/normal_objects.excalidraw]]
 
 Every interface inside a COM object is also uniquely identifiable. And a separate pointer is required to access each interface. Once an interface is exposed for client usage, it _must never be changed_ (they are **immutable**).
 
@@ -117,7 +120,7 @@ This level of "indirection" is all that is required for COM to transparently pro
 
 > When you obtain an interface pointer, you are actually receiving a pointer to a pointer that is pointing to a VTBL of function pointers. An interface is actually a pointer to a VTBL of function pointers.
 
-![[interfaces_and_vtables.excalidraw]]
+![[excalidraw/interfaces_and_vtables.excalidraw]]
 
 Obviously, the pointers will only be able to access information within a single process space. If a server is out-of-process, client interface pointers are not allowed to access information in the server's process space (again, obviously). To solve this problem, COM relies on a special piece of in-process software called a proxy. In the case where you ever receive an interface pointer to an out-of-process object, you really are just receiving a pointer to a proxy. The proxy exists to take the place of the object and to forward any client requests to another special piece of software called a _stub_.
 
@@ -134,7 +137,7 @@ When the client is accessing a local server, and the proxy and stub are located 
 
 > RPC is the basis of DCOM.
 
-![[com_proxies_and_stubs.excalidraw|com_proxies_and_stubs]]
+![[excalidraw/com_proxies_and_stubs.excalidraw|com_proxies_and_stubs]]
 
 ## Type Libraries
 
