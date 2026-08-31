@@ -181,7 +181,6 @@ plugins:
       folderDefaultState: open
       folderClickBehavior: link
       useSavedState: false
-      order:
     order: 50
     layout:
       position: left
