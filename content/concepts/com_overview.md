@@ -1,9 +1,6 @@
 ---
 publish: true
-title: COM Overview
 created: 2026-08-31T04:42:47.226Z
-tags:
-  - theory
 ---
 
 # Introduction
