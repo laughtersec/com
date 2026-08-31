@@ -6,7 +6,7 @@ tags:
   - programming-preliminaries
 ---
 
-> Please get [[com_overview|an overview of COM]] before proceeding.
+> Please get [[concepts/com_overview|an overview of COM]] before proceeding.
 
 Lets create our first in-process server "UserInfo". ==This is a hypothetical COM object== which is used to maintain information about an individual person (name, age, sex etc.). Here, each piece of information that is maintained is exposed as a property of the UserInfo COM object.
 
