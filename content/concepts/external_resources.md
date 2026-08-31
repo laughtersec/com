@@ -1,5 +1,6 @@
 ---
 publish: true
+title: External Resources
 created: 2026-08-31T04:42:47.232Z
 tags:
   - theory
